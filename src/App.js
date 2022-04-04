@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Images from "./Images";
 
-function App() {
+export function App() {
+  const [selectedImg, setSelectedImg] = useState(Images[0]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="container">
+        <img src={selectedImg} alt="Selected" className="selected" />
+        <div className="img-container">
+          {Images.map((img, index) => (
+            <img
+              style={{ border: selectedImg === img ? "4px solid lightblue" : "" }}
+              key={index}
+              src={img}
+              alt="city"
+            onClick={() => setSelectedImg(img)}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
