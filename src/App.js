@@ -57,35 +57,43 @@ export function App() {
             validate={validate}
             render={({ handleSubmit }) => (
               <form class="w-full" onSubmit={handleSubmit}>
+              <div className="grid grid-flow-row-dense grid-cols-3 grid-rows-3">
                 <div className="flex mb-4 items-center border-b border-teal-500 py-2">
                   <label className="text-lime-500">Nombre</label>
+                </div>
+                <div className="flex x mb-4 items-center border-b border-teal-500 col-span-2">
                   <Field
                     className="w-full appearance-none bg-transparent border-none text-white-600 placeholder:text-slate-700 py-1 px-2 leading-tight focus:outline-none"
                     type="text"
                     name="firstName"
                     component="input"
-                    placeholder="Miguel Ignacio"
+                    placeholder="Juan Carlos"
                   />
                 </div>
                 <div className="flex mb-4 items-center border-b border-teal-500 py-2">
                   <label className="text-lime-500">Apellido</label>
+                </div>
+                <div className="flex x mb-4 items-center border-b border-teal-500 col-span-2">
                   <Field
                     className="w-full appearance-none bg-transparent border-none text-white-700 placeholder:text-slate-700 py-1 px-2 leading-tight focus:outline-none"
                     type="text"
                     name="lastName"
                     component="input"
-                    placeholder="Isas"
+                    placeholder="Perez"
                   />
                 </div>
-                <div className=" mb-4 items-center border-b border-teal-500 py-2">
-                  <label className=" text-lime-500">Correo electrónico</label>
+                <div className="flex mb-4 items-center border-b border-teal-500 py-2">
+                  <label className="text-lime-500">Correo Electrónico</label>
+                </div>
+                <div className="flex x mb-4 items-center border-b border-teal-500 col-span-2">
                   <Field
                     className="appearance-none bg-transparent border-none text-white-700 placeholder:text-slate-700 py-1 px-2 leading-tight focus:outline-none"
                     type="text"
                     name="email"
                     component="input"
-                    placeholder="ignacioisas@lab9.com"
+                    placeholder="juanca@lab9.com"
                   />
+                </div>
                 </div>
                 <div className="float-right">
                   <button
