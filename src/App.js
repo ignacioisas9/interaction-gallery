@@ -17,9 +17,14 @@ export function App() {
   return (
     <div className="w-auto min-h-screen flex bg-slate-800 font-sans">
       <div className="m-auto w-auto max-w-screen-sm pt-8 py-4 px-0 pr-0 text-center">
-        <div className="text-5xl pb-8 font-bold text-slate-50">
-          Elige tu próximo destino
-        </div>
+        <blockquote class="text-4xl font-semibold italic text-center text-slate-100 p-8">
+          <span>Elige tu próximo </span>
+          <span class="relative">
+            <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
+              <span class="relative text-white">DESTINO</span>
+            </span>
+          </span>
+        </blockquote>
         <img
           src={selectedImg}
           alt="Selected"
@@ -44,7 +49,7 @@ export function App() {
           </div>
         </div>
 
-        <button className="btn m-8 btn-xs sm:btn-sm md:btn-md lg:btn-lg">
+        <button className="btn m-8 btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-sky-700 hover:bg-sky-600 focus:ring focus:ring-sky-600 text-slate-200">
           Comprar pasajes
         </button>
 
@@ -57,49 +62,49 @@ export function App() {
             validate={validate}
             render={({ handleSubmit }) => (
               <form class="w-full" onSubmit={handleSubmit}>
-              <div className="grid grid-flow-row-dense grid-cols-3 grid-rows-3">
-                <div className="flex mb-4 items-center border-b border-teal-500 py-2">
-                  <label className="text-lime-500">Nombre</label>
-                </div>
-                <div className="flex x mb-4 items-center border-b border-teal-500 col-span-2">
-                  <Field
-                    className="w-full appearance-none bg-transparent border-none text-white-600 placeholder:text-slate-700 py-1 px-2 leading-tight focus:outline-none"
-                    type="text"
-                    name="firstName"
-                    component="input"
-                    placeholder="Juan Carlos"
-                  />
-                </div>
-                <div className="flex mb-4 items-center border-b border-teal-500 py-2">
-                  <label className="text-lime-500">Apellido</label>
-                </div>
-                <div className="flex x mb-4 items-center border-b border-teal-500 col-span-2">
-                  <Field
-                    className="w-full appearance-none bg-transparent border-none text-white-700 placeholder:text-slate-700 py-1 px-2 leading-tight focus:outline-none"
-                    type="text"
-                    name="lastName"
-                    component="input"
-                    placeholder="Perez"
-                  />
-                </div>
-                <div className="flex mb-4 items-center border-b border-teal-500 py-2">
-                  <label className="text-lime-500">Correo Electrónico</label>
-                </div>
-                <div className="flex x mb-4 items-center border-b border-teal-500 col-span-2">
-                  <Field
-                    className="appearance-none bg-transparent border-none text-white-700 placeholder:text-slate-700 py-1 px-2 leading-tight focus:outline-none"
-                    type="text"
-                    name="email"
-                    component="input"
-                    placeholder="juanca@lab9.com"
-                  />
-                </div>
+                <div className="grid grid-flow-row-dense grid-cols-3 grid-rows-3">
+                  <div className="flex mb-4 items-center border-b border-teal-500 py-2">
+                    <label className="text-lime-500">Nombre</label>
+                  </div>
+                  <div className="flex x mb-4 items-center border-b border-teal-500 col-span-2">
+                    <Field
+                      className="w-full appearance-none bg-transparent border-none text-white-600 placeholder:text-slate-700 py-1 px-2 leading-tight focus:outline-none"
+                      type="text"
+                      name="firstName"
+                      component="input"
+                      placeholder="Juan Carlos"
+                    />
+                  </div>
+                  <div className="flex mb-4 items-center border-b border-teal-500 py-2">
+                    <label className="text-lime-500">Apellido</label>
+                  </div>
+                  <div className="flex x mb-4 items-center border-b border-teal-500 col-span-2">
+                    <Field
+                      className="w-full appearance-none bg-transparent border-none text-white-700 placeholder:text-slate-700 py-1 px-2 leading-tight focus:outline-none"
+                      type="text"
+                      name="lastName"
+                      component="input"
+                      placeholder="Perez"
+                    />
+                  </div>
+                  <div className="flex mb-4 items-center border-b border-teal-500 py-2">
+                    <label className="text-lime-500">Correo Electrónico</label>
+                  </div>
+                  <div className="flex x mb-4 items-center border-b border-teal-500 col-span-2">
+                    <Field
+                      className="appearance-none bg-transparent border-none text-white-700 placeholder:text-slate-700 py-1 px-2 leading-tight focus:outline-none"
+                      type="text"
+                      name="email"
+                      component="input"
+                      placeholder="juanca@lab9.com"
+                    />
+                  </div>
                 </div>
                 <div className="float-right">
                   <button
-                    className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    className="btn m-8 btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-sky-700 hover:bg-sky-600 focus:ring focus:ring-sky-600 text-slate-200"
                     type="submit"
-                    >
+                  >
                     Enviar
                   </button>
                 </div>
