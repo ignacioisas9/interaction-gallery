@@ -20,8 +20,8 @@ export function App() {
         <blockquote class="text-4xl font-semibold italic text-center text-slate-100 p-8">
           <span>Elige tu próximo </span>
           <span class="relative">
-            <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
-              <span class="relative text-white">DESTINO</span>
+            <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-rose-700 relative inline-block">
+              <span class="relative text-white bg">DESTINO</span>
             </span>
           </span>
         </blockquote>
@@ -49,7 +49,7 @@ export function App() {
           </div>
         </div>
 
-        <button className="btn m-8 btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-sky-700 hover:bg-sky-600 focus:ring focus:ring-sky-600 text-slate-200">
+        <button className="btn m-8 btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-rose-700 hover:bg-rose-900 focus:ring focus:ring-rose-900 text-slate-200">
           Comprar pasajes
         </button>
 
@@ -63,10 +63,10 @@ export function App() {
             render={({ handleSubmit }) => (
               <form class="w-full" onSubmit={handleSubmit}>
                 <div className="grid grid-flow-row-dense grid-cols-3 grid-rows-3">
-                  <div className="flex mb-4 items-center border-b border-teal-500 py-2">
-                    <label className="text-lime-500">Nombre</label>
+                  <div className="flex mb-4 items-center border-b border-rose-400 py-2">
+                    <label className="text-rose-500">Nombre</label>
                   </div>
-                  <div className="flex x mb-4 items-center border-b border-teal-500 col-span-2">
+                  <div className="flex x mb-4 items-center border-b border-rose-400 col-span-2">
                     <Field
                       className="w-full appearance-none bg-transparent border-none text-white-600 placeholder:text-slate-700 py-1 px-2 leading-tight focus:outline-none"
                       type="text"
@@ -75,10 +75,10 @@ export function App() {
                       placeholder="Juan Carlos"
                     />
                   </div>
-                  <div className="flex mb-4 items-center border-b border-teal-500 py-2">
-                    <label className="text-lime-500">Apellido</label>
+                  <div className="flex mb-4 items-center border-b border-rose-400 py-2">
+                    <label className="text-rose-500">Apellido</label>
                   </div>
-                  <div className="flex x mb-4 items-center border-b border-teal-500 col-span-2">
+                  <div className="flex x mb-4 items-center border-b border-rose-400 col-span-2">
                     <Field
                       className="w-full appearance-none bg-transparent border-none text-white-700 placeholder:text-slate-700 py-1 px-2 leading-tight focus:outline-none"
                       type="text"
@@ -87,10 +87,10 @@ export function App() {
                       placeholder="Perez"
                     />
                   </div>
-                  <div className="flex mb-4 items-center border-b border-teal-500 py-2">
-                    <label className="text-lime-500">Correo Electrónico</label>
+                  <div className="flex mb-4 items-center border-b border-rose-400 py-2">
+                    <label className="text-rose-500">Correo Electrónico</label>
                   </div>
-                  <div className="flex x mb-4 items-center border-b border-teal-500 col-span-2">
+                  <div className="flex x mb-4 items-center border-b border-rose-400 col-span-2">
                     <Field
                       className="appearance-none bg-transparent border-none text-white-700 placeholder:text-slate-700 py-1 px-2 leading-tight focus:outline-none"
                       type="text"
@@ -102,7 +102,7 @@ export function App() {
                 </div>
                 <div className="float-right">
                   <button
-                    className="btn m-8 btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-sky-700 hover:bg-sky-600 focus:ring focus:ring-sky-600 text-slate-200"
+                    className="btn m-8 btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-rose-700 hover:bg-rose-900 focus:ring focus:ring-rose-900 text-slate-200"
                     type="submit"
                   >
                     Enviar
