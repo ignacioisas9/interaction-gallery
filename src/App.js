@@ -4,7 +4,7 @@ import "./App.css";
 import Images from "./Images";
 
 export function App() {
-  const [selectedImg, setSelectedImg] = useState(Images[0]);
+  const [selectedImg, setSelectedImg] = useState(Images[0][0]);
 
   const onSubmit = (e) => {
     debugger;
@@ -20,7 +20,7 @@ export function App() {
         <blockquote class="text-4xl font-semibold italic text-center text-slate-100 p-8">
           <span>Elige tu próximo </span>
           <span class="relative">
-            <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-rose-700 relative inline-block">
+            <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-gradient-to-r before:from-indigo-600 to-rose-500 before:bg-rose-700 relative inline-block">
               <span class="relative text-white bg">DESTINO</span>
             </span>
           </span>
@@ -31,25 +31,29 @@ export function App() {
           className="w-auto h-auto mx-0 my-auto rounded-md"
         />
         <div className="w-auto flex justify-between flex-wrap pt-10 px-0 pb-10">
-          <div className="grid sm:grid-cols-3 md:grid-cols-4 gap-4 w-full cursor-pointer justify-items-center">
-            {Images.map((img, index) => (
-              <figure>
+          <div className="grid sm:grid-cols-3 md:grid-cols-4 gap-4 w-full  justify-items-center">
+            {Images.map(([img, name], index) => (
+              <figure className="relative cursor-pointer hover:scale-105 duration-300">
                 <img
-                  className="w-40 h-28 mx-0 my-0 rounded-md"
+                  className="block w-40 h-28 mx-0 my-0 rounded-md"
                   style={{
                     border: selectedImg === img ? "4px solid lightblue" : "",
                   }}
                   key={index}
                   src={img}
-                  alt="city"
-                  onClick={() => setSelectedImg(img)}
+                  alt={name}
                 />
+                <div
+                  className="flex flex-col items-center justify-center absolute rounded-md top-0 left-0 w-full h-full overflow-visible font-small text-xl text-white bg-[#00000099] opacity-0 transition-opacity delay-150 hover:opacity-100 duration-500"
+                  onClick={() => setSelectedImg(img)}
+                >
+                  {name}
+                </div>
               </figure>
             ))}
           </div>
         </div>
-
-        <button className="btn m-8 btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-rose-700 hover:bg-rose-900 focus:ring focus:ring-rose-900 text-slate-200">
+        <button className="btn m-8 btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-rose-500 hover:bg-rose-900 focus:ring focus:ring-rose-900 text-slate-200">
           Comprar pasajes
         </button>
 
@@ -102,7 +106,7 @@ export function App() {
                 </div>
                 <div className="float-right">
                   <button
-                    className="btn m-8 btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-rose-700 hover:bg-rose-900 focus:ring focus:ring-rose-900 text-slate-200"
+                    className="btn m-8 btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-rose-500 hover:bg-rose-900 focus:ring focus:ring-rose-900 text-slate-200"
                     type="submit"
                   >
                     Enviar
