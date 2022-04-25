@@ -1,4 +1,4 @@
-export default function MyTrip() {
+export default function MiViaje() {
   return (
     <div>Mi Viaje</div>
   )

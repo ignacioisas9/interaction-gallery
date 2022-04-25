@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Form, Field } from "react-final-form";
-import Images from "../Images";
+import { cities } from "../Images";
 
 export default function Home() {
-  const [selectedImg, setSelectedImg] = useState(Images[0][0]);
+  const [selectedImg, setSelectedImg] = useState(cities[0].image);
 
   const onSubmit = (e) => {
     debugger;
@@ -14,7 +14,7 @@ export default function Home() {
   };
   return (
     <div className="w-auto min-h-screen flex bg-slate-800 font-sans">
-      <div className="m-auto w-auto max-w-screen-sm pt-8 px-0 pr-0 text-center">
+      <div className="m-auto w-auto max-w-screen-sm pt-0 px-0 pr-0 text-center">
         <div class="navbar bg-base-100">
           <div class="navbar-start">
             <div class="dropdown">
@@ -39,22 +39,19 @@ export default function Home() {
                 class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-left"
               >
                 <li>
-                  <a href="/Destinations">Destinos</a>
+                  <a href="/Destinos">Destinos</a>
                 </li>
                 <li>
-                  <a href="/Prices">Precios</a>
+                  <a href="/Precios">Precios</a>
                 </li>
                 <li>
-                  <a href="/MyTrip">Tu viaje</a>
+                  <a href="/MiViaje">Tu viaje</a>
                 </li>
               </ul>
             </div>
           </div>
           <div class="navbar-center">
-            <a
-              href="/"
-              class="btn btn-ghost normal-case text-xl"
-            >
+            <a href="/" class="btn btn-ghost normal-case text-xl">
               Turismo ciudad
             </a>
           </div>
@@ -112,30 +109,27 @@ export default function Home() {
         />
         <div className="w-auto flex justify-between flex-wrap pt-10 px-0 pb-10">
           <div className="grid sm:grid-cols-3 md:grid-cols-4 gap-4 w-full  justify-items-center">
-            {Images.map(([img, name], index) => (
+            {cities.map((city, index) => (
               <figure className="relative cursor-pointer hover:scale-105 duration-300">
                 <img
                   className="block w-40 h-28 mx-0 my-0 rounded-md"
                   style={{
-                    border: selectedImg === img ? "4px solid lightblue" : "",
+                    border: selectedImg === city.image ? "4px solid lightblue" : "",
                   }}
                   key={index}
-                  src={img}
-                  alt={name}
+                  src={city.image}
+                  alt={city.city}
                 />
                 <div
                   className="flex flex-col items-center justify-center absolute rounded-md top-0 left-0 w-full h-full overflow-visible font-small text-xl text-white bg-[#00000099] opacity-0 transition-opacity delay-150 hover:opacity-100 duration-500"
-                  onClick={() => setSelectedImg(img)}
+                  onClick={() => setSelectedImg(city.image)}
                 >
-                  {name}
+                  {city.city}
                 </div>
               </figure>
             ))}
           </div>
         </div>
-        <button className="btn m-8 btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-rose-500 hover:bg-rose-900 focus:ring focus:ring-rose-900 text-slate-200">
-          Comprar pasajes
-        </button>
 
         <div className="text-left text-3xl text-slate-50">
           <h1 className="py-8">
@@ -197,7 +191,7 @@ export default function Home() {
           />
         </div>
 
-        <footer class="footer footer-center p-4 bg-base-300 text-base-content">
+        <footer class="footer footer-center p-4 bg-base-100 text-base-content">
           <div>
             <p>Copyright © 2022 - All right reserved by ACME Industries Ltd</p>
           </div>
