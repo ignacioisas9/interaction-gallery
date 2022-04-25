@@ -36,7 +36,7 @@ export default function Home() {
               </label>
               <ul
                 tabindex="0"
-                class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-left"
+                class="menu menu-compact dropdown-content mt-3 shadow bg-base-100 rounded-xl w-52 text-left"
               >
                 <li>
                   <a href="/Destinos">Destinos</a>
