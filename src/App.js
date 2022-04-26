@@ -5,11 +5,13 @@ import Destinos from "./pages/Destinos"
 import Precios from "./pages/Precios";
 import MiViaje from "./pages/MiViaje";
 import NotFound from "./pages/NotFound";
+import NavBar from "./components/NavBar";
 
 export function App() {
 
   return (
     <BrowserRouter>
+      <NavBar/>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/Destinos" element={<Destinos/>} />

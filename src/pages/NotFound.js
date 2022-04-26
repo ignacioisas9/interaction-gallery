@@ -1,5 +1,5 @@
 export default function NotFound() {
   return (
-    <div>404 Not Found</div>
+    <div className="bg-slate-800 min-h-screen">404 Not Found</div>
   )
 }

@@ -3,7 +3,7 @@ import { cities } from "../Images";
 
 export default function Destinos() {
   return (
-    <div class="bg-slate-800 w-auto">
+    <div class="bg-slate-800 w-auto p-8">
       <div class="overflow-x-auto m-auto max-w-screen-sm flex">
         <table class="table w-full">
           <thead>
