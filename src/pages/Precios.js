@@ -17,7 +17,7 @@ export default function Precios() {
   };
 
   return (
-    <div className="w-auto min-h-screen flex bg-slate-800 font-sans">
+    <div className="w-auto min-h-screen flex bg-slate-800 font-sans pt-16">
       <div className="m-auto max-w-screen-sm pt-0 px-0 pr-0 text-center w-1/2">
         <div className="bg-slate-800 text-center py-16">
           Precios

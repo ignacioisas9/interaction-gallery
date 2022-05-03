@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import Destinos from "./pages/Destinos"
 import Precios from "./pages/Precios";
 import MiViaje from "./pages/MiViaje";
+import CRUD from "./pages/CRUD";
 import NotFound from "./pages/NotFound";
 import NavBar from "./components/NavBar";
 
@@ -17,6 +18,7 @@ export function App() {
         <Route path="/Destinos" element={<Destinos/>} />
         <Route path="/Precios" element={<Precios/>} />
         <Route path="/MiViaje" element={<MiViaje/>} />
+        <Route path="/CRUD" element={<CRUD/>}/>
         <Route path="*" element={<NotFound/>}/>
       </Routes>
     </BrowserRouter>

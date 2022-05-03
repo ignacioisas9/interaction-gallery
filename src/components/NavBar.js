@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export default function NavBar() {
   return (
-    <div class="navbar bg-base-100 w-1/2 m-auto flex font-sans">
+    <div class="navbar bg-base-100 w-full m-auto flex font-sans z-[10000] fixed top-0">
       <div class="navbar-start">
         <div class="dropdown">
           <label
@@ -50,6 +50,14 @@ export default function NavBar() {
                 to="/MiViaje"
               >
                 Tu viaje
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className={({ isActive }) => (isActive ? "font-bold" : "")}
+                to="/CRUD"
+              >
+                CRUD
               </NavLink>
             </li>
           </ul>

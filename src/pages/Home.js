@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Field } from "react-final-form";
 import { cities } from "../Images";
+import { NavLink } from "react-router-dom";
 
 export default function Home() {
   const [selectedImg, setSelectedImg] = useState(cities[0].image);
@@ -13,7 +14,7 @@ export default function Home() {
     //debugger
   };
   return (
-    <div className="w-auto min-h-screen flex bg-slate-800 font-sans">
+    <div className="w-auto min-h-screen flex bg-slate-800 font-sans pt-16">
       <div className="m-auto w-auto max-w-screen-sm pt-0 px-0 pr-0 text-center">
         <blockquote class="text-4xl font-semibold italic text-center text-slate-100 p-8 pt-16">
           <span>Elige tu próximo </span>
@@ -35,20 +36,26 @@ export default function Home() {
                 <img
                   className="block w-40 h-28 mx-0 my-0 rounded-md"
                   style={{
-                    border: selectedImg === city.image ? "4px solid lightblue" : "",
+                    border:
+                      selectedImg === city.image ? "4px solid lightblue" : "",
                   }}
                   key={index}
                   src={city.image}
                   alt={city.city}
                 />
                 <div
-                  className="flex flex-col items-center justify-center absolute rounded-md top-0 left-0 w-full h-full overflow-visible font-small text-xl text-white bg-[#00000099] opacity-0 transition-opacity delay-150 hover:opacity-100 duration-500"
+                  className="flex flex-col items-center justify-center absolute rounded-md top-0 left-0 w-full h-full overflow-visible text-xl text-white bg-[#00000099] opacity-0 transition-opacity delay-150 hover:opacity-100 duration-500"
                   onClick={() => setSelectedImg(city.image)}
                 >
                   {city.city}
                 </div>
               </figure>
             ))}
+            <NavLink
+              className="flex p-2 w-full h-full rounded-md bg-slate-400 text-7xl justify-center text-white opacity-20 hover:opacity-100 duration-500"
+              to="/CRUD">
+              +
+            </NavLink>
           </div>
         </div>
 
@@ -111,7 +118,6 @@ export default function Home() {
             )}
           />
         </div>
-
 
         <footer class="footer footer-center p-4 bg-base-100 text-base-content">
           <div>
