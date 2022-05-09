@@ -1,6 +1,28 @@
-import { cities } from "../Images";
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import { useState, useEffect } from "react";
+import { db } from "../firebase/firebaseConfig";
 
 export default function CRUD() {
+  const [newCity, setNewCity] = useState("");
+  const [newCountry, setNewCountry] = useState("");
+  const [newURL, setNewURL] = useState("");
+  const [newAttractions, setNewAttractions] = useState("");
+  const [destinations, setDestinations] = useState([]);
+  const destinationsCollectionRef = collection(db, "cities");
+
+  const createDestination = async () => {
+    await addDoc(destinationsCollectionRef, { city: newCity, country: newCountry, url: newURL, attractions: newAttractions.split(",") });
+  };
+
+  useEffect(() => {
+    const getDestinations = async () => {
+      const data = await getDocs(destinationsCollectionRef);
+      setDestinations(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+    };
+
+    getDestinations();
+  }, []);
+
   return (
     <div className="w-auto flex bg-slate-800 font-sans pt-16 justify-center">
       <div className="py-10">
@@ -8,27 +30,64 @@ export default function CRUD() {
           <div className="py-10">
             <form id="city-form">
               <div className="py-2 overflow-hidden w-auto">
-                <label className="float-left" for="city">Ciudad:</label>
-                <input className="float-right rounded-md bg-slate-400 w-80 text-black px-3 py-1 mx-2" type="text" id="city-name"></input>
+                <label className="float-left" for="city">
+                  Ciudad:
+                </label>
+                <input
+                  className="float-right rounded-md bg-slate-400 w-80 text-black px-3 py-1 mx-2"
+                  type="text"
+                  id="city"
+                  onChange={(event) => {
+                    setNewCity(event.target.value);
+                  }}
+                ></input>
                 <br />
               </div>
               <div className="py-2 overflow-hidden w-auto">
-                <label className="float-left" for="country">País:</label>
-                <input className="float-right rounded-md bg-slate-400 w-80 text-black px-3 py-1 mx-2" type="text" id="country-name"></input>
+                <label className="float-left" for="country">
+                  País:
+                </label>
+                <input
+                  className="float-right rounded-md bg-slate-400 w-80 text-black px-3 py-1 mx-2"
+                  type="text"
+                  id="country"
+                  onChange={(event) => {
+                    setNewCountry(event.target.value);
+                  }}
+                ></input>
                 <br />
               </div>
               <div className="py-2 overflow-hidden w-auto">
-                <label className="float-left" for="img">URL de la imagen:</label>
-                <input className="float-right rounded-md bg-slate-400 w-80 text-black px-3 py-1 mx-2" type="text" id="img"></input>
+                <label className="float-left" for="url">
+                  URL de la imagen:
+                </label>
+                <input
+                  className="float-right rounded-md bg-slate-400 w-80 text-black px-3 py-1 mx-2"
+                  type="text"
+                  id="url"
+                  onChange={(event) => {
+                    setNewURL(event.target.value);
+                  }}
+                ></input>
                 <br />
               </div>
               <div className="py-2 overflow-hidden w-auto">
-                <label className="float-left" for="attractions">Atracción:</label>
-                <input className="float-right rounded-md bg-slate-400 w-80 text-black px-3 py-1 mx-2" type="text" id="attraction-name"></input>
+                <label className="float-left" for="attractions">
+                  Atracciones:
+                </label>
+                <input
+                  className="float-right rounded-md bg-slate-400 w-80 text-black px-3 py-1 mx-2 placeholder:text-gray-600"
+                  placeholder="separadas por coma ( , )"
+                  type="text"
+                  id="attractions"
+                  onChange={(event) => {
+                    setNewAttractions(event.target.value);
+                  }}
+                ></input>
                 <br />
               </div>
-                <br />
-              <button id="btn-save" className="btn btn-success">
+              <br />
+              <button onClick={createDestination} id="btn-save" className="btn btn-success" type="button">
                 Agregar
               </button>
             </form>
@@ -46,14 +105,14 @@ export default function CRUD() {
               </tr>
             </thead>
             <tbody>
-              {cities.map((city, index) => (
+              {destinations.map((city) => (
                 <tr>
                   <th>{city.id}</th>
                   <td>{city.city}</td>
                   <td>{city.country}</td>
                   <td>
-                    {city.attractions.map((attraction, index) => (
-                      <li>{attraction.name}</li>
+                    {city.attractions.map((attraction) => (
+                      <li>{attraction}</li>
                     ))}
                   </td>
                   <td>
