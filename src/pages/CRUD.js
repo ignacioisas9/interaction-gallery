@@ -1,4 +1,4 @@
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc, setDoc, doc } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db } from "../firebase/firebaseConfig";
 
@@ -10,8 +10,17 @@ export default function CRUD() {
   const [destinations, setDestinations] = useState([]);
   const destinationsCollectionRef = collection(db, "cities");
 
+
   const createDestination = async () => {
-    await addDoc(destinationsCollectionRef, { city: newCity, country: newCountry, url: newURL, attractions: newAttractions.split(",") });
+    var newId = "8";
+    await setDoc(doc(db, "cities", newId), { city: newCity, country: newCountry, url: newURL, attractions: newAttractions.split(",") });
+    newId = toString(parseInt(newId) + 1);
+    const getDestinations = async () => {
+      const data = await getDocs(destinationsCollectionRef);
+      setDestinations(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+    };
+
+    getDestinations();
   };
 
   useEffect(() => {
