@@ -1,6 +1,8 @@
-import { collection, getDocs, addDoc, setDoc, doc } from "firebase/firestore";
+import { collection, getDocs, setDoc, doc, updateDoc, orderBy, deleteDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db } from "../firebase/firebaseConfig";
+
+var newId = "8";
 
 export default function CRUD() {
   const [newCity, setNewCity] = useState("");
@@ -10,11 +12,9 @@ export default function CRUD() {
   const [destinations, setDestinations] = useState([]);
   const destinationsCollectionRef = collection(db, "cities");
 
-
   const createDestination = async () => {
-    var newId = "8";
     await setDoc(doc(db, "cities", newId), { city: newCity, country: newCountry, url: newURL, attractions: newAttractions.split(",") });
-    newId = toString(parseInt(newId) + 1);
+    newId = (parseInt(newId) + 1).toString();
     const getDestinations = async () => {
       const data = await getDocs(destinationsCollectionRef);
       setDestinations(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
@@ -22,6 +22,18 @@ export default function CRUD() {
 
     getDestinations();
   };
+
+  const updateDestination = async (id) => {
+    const cityDoc = doc(db, "cities", id);
+    const newFields = {};
+    await updateDoc(cityDoc, newFields)
+  }
+
+  const deleteDestination = async (id) => {
+    const cityDoc = doc(db, "cities", id);
+    await deleteDoc(cityDoc);
+    window.location.reload();
+  }
 
   useEffect(() => {
     const getDestinations = async () => {
@@ -125,8 +137,8 @@ export default function CRUD() {
                     ))}
                   </td>
                   <td>
-                    <button className="btn btn-error">Borrar</button>
-                    <button className="btn btn-ghost">Editar</button>
+                    <button type="button" onClick={() => deleteDestination(city.id)} className="btn btn-error">Borrar</button>
+                    <button className="btn btn-ghost" type="button" onClick={updateDestination(city.id)}>Editar</button>
                   </td>
                 </tr>
               ))}

@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Field } from "react-final-form";
-import { cities } from "../Images";
 import { NavLink } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig";
 
 export default function Home() {
-  const [selectedImg, setSelectedImg] = useState(cities[0].image);
+  const [destinations, setDestinations] = useState([]);
+  const [selectedImg, setSelectedImg] = useState("https://wallpapercave.com/wp/wp1825728.jpg");
+  const destinationsCollectionRef = collection(db, "cities");
 
   const onSubmit = (e) => {
     debugger;
@@ -13,6 +16,16 @@ export default function Home() {
   const validate = (e) => {
     //debugger
   };
+
+  useEffect(() => {
+    const getDestinations = async () => {
+      const data = await getDocs(destinationsCollectionRef);
+      setDestinations(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+    };
+
+    getDestinations();
+  });
+
   return (
     <div className="w-auto min-h-screen flex bg-slate-800 font-sans pt-16">
       <div className="m-auto w-auto max-w-screen-sm pt-0 px-0 pr-0 text-center">
@@ -31,28 +44,28 @@ export default function Home() {
         />
         <div className="w-auto flex justify-between flex-wrap pt-10 px-0 pb-10">
           <div className="grid sm:grid-cols-3 md:grid-cols-4 gap-4 w-full  justify-items-center">
-            {cities.map((city, index) => (
+            {destinations.map((city, index) => (
               <figure className="relative cursor-pointer hover:scale-105 duration-300">
                 <img
                   className="block w-40 h-28 mx-0 my-0 rounded-md"
                   style={{
                     border:
-                      selectedImg === city.image ? "4px solid lightblue" : "",
+                      selectedImg === city.url ? "4px solid lightblue" : "",
                   }}
                   key={index}
-                  src={city.image}
+                  src={city.url}
                   alt={city.city}
                 />
                 <div
                   className="flex flex-col items-center justify-center absolute rounded-md top-0 left-0 w-full h-full overflow-visible text-xl text-white bg-[#00000099] opacity-0 transition-opacity delay-150 hover:opacity-100 duration-500"
-                  onClick={() => setSelectedImg(city.image)}
+                  onClick={() => setSelectedImg(city.url)}
                 >
                   {city.city}
                 </div>
               </figure>
             ))}
             <NavLink
-              className="flex p-2 w-full h-full rounded-md bg-slate-400 text-7xl justify-center text-white opacity-20 hover:opacity-100 duration-500"
+              className="flex flex-col pb-3 items-center justify-center rounded-md top-0 left-0 w-full h-28 overflow-visible text-6xl hover:scale-105 transition duration-500 ease-in-out text-white bg-[#00000099] opacity-20 delay-150 hover:opacity-60"
               to="/CRUD">
               +
             </NavLink>
