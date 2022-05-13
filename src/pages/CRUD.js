@@ -1,4 +1,4 @@
-import { collection, getDocs, setDoc, doc, updateDoc, orderBy, deleteDoc } from "firebase/firestore";
+import { collection, getDocs, setDoc, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db } from "../firebase/firebaseConfig";
 
@@ -23,11 +23,11 @@ export default function CRUD() {
     getDestinations();
   };
 
-  const updateDestination = async (id) => {
-    const cityDoc = doc(db, "cities", id);
-    const newFields = {};
-    await updateDoc(cityDoc, newFields)
-  }
+  // const updateDestination = async (id) => {
+  //   const cityDoc = doc(db, "cities", id);
+  //   const newFields = {};
+  //   await updateDoc(cityDoc, newFields)
+  // }
 
   const deleteDestination = async (id) => {
     const cityDoc = doc(db, "cities", id);
@@ -138,7 +138,7 @@ export default function CRUD() {
                   </td>
                   <td>
                     <button type="button" onClick={() => deleteDestination(city.id)} className="btn btn-error">Borrar</button>
-                    <button className="btn btn-ghost" type="button" onClick={updateDestination(city.id)}>Editar</button>
+                    <button className="btn btn-ghost" type="button">Editar</button>
                   </td>
                 </tr>
               ))}
