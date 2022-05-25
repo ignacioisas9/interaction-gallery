@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Destinos from "./pages/Destinos";
 import Precios from "./pages/Precios";
@@ -14,14 +14,26 @@ export function App() {
     <BrowserRouter>
       <ScrollToTop />
       <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Destinos" element={<Destinos />} />
-        <Route path="/Precios" element={<Precios />} />
-        <Route path="/MiViaje" element={<MiViaje />} />
-        <Route path="/CRUD" element={<CRUD />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Switch>
+        <Route path="/">
+          <Home />
+        </Route>
+        <Route path="/Destinos">
+          <Destinos />
+        </Route>
+        <Route path="/Precios">
+          <Precios />
+        </Route>
+        <Route path="/MiViaje">
+          <MiViaje />
+        </Route>
+        <Route path="/CRUD">
+          <CRUD />
+        </Route>
+        <Route path="*">
+          <NotFound />
+        </Route>
+      </Switch>
     </BrowserRouter>
   );
 }
